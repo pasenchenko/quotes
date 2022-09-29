@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Twig
+        $loader = new \Twig\Loader\FilesystemLoader();
+        $loader->addPath(base_path() . '/resources/views/components', 'components');
+        $loader->addPath(base_path() . '/resources/views/layouts', 'layouts');
+        \Twig::getLoader()->addLoader($loader);
     }
 }
