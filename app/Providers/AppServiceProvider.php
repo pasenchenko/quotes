@@ -26,7 +26,8 @@ class AppServiceProvider extends ServiceProvider
         // Twig
         $loader = new \Twig\Loader\FilesystemLoader();
         $loader->addPath(base_path() . '/resources/views/components', 'components');
-        $loader->addPath(base_path() . '/resources/views/layouts', 'layouts');
+        $loader->addPath(base_path() . '/resources/views/components/form', 'form');
+        $loader->addPath(base_path() . '/resources/views/layout', 'layout');
         \Twig::getLoader()->addLoader($loader);
     }
 }

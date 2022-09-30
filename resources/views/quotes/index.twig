@@ -1,0 +1,8 @@
+{% embed '@layout/default.twig' with {'title': 'Latest quotes'} %}
+    {% block main %}
+        {{ parent() }}
+        <p class="important">
+            Welcome to my awesome homepage.
+        </p>
+    {% endblock %}
+{% endembed %}

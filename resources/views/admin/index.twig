@@ -1,0 +1,7 @@
+{% embed '@layout/default.twig' with {'title': 'Admin Panel'} %}
+    {% block main %}
+        {{ parent() }}
+
+        <a class="underline text-blue-800" href="{{ route('admin.user.index') }}">User Management</a>
+    {% endblock %}
+{% endembed %}

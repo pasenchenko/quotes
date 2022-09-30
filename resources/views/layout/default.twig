@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html class="w-full h-full">
+	<head>
+		{% block head %}
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src="https://cdn.tailwindcss.com"></script>
+			<link rel="stylesheet" href="app.css" />
+			<title>{{ title }} - {{ config_get('app.name') }}</title>
+		{% endblock %}
+	</head>
+	<body class="antialiased w-full h-full">
+        <div class="container mx-auto px-4 flex flex-col min-h-screen w-full h-full">
+            <header>
+                {% block header %}
+                    {% include('@layout/header/header.twig') %}
+                {% endblock %}
+            </header>
+            <main class="flex-1">
+                {{ include('@components/common/page-title.twig', {'title': title}) }}
+                {% block main %}{% endblock %}
+            </main>
+            <footer class="py-4">
+                {% block footer %}
+                    {{ include('@layout/footer/footer.twig') }}
+                {% endblock %}
+            </footer>
+        </div>
+    </body>
+</html>

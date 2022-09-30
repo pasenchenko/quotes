@@ -1,0 +1,13 @@
+<form method="POST" accept-charset="UTF-8" action="{{ action }}">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+
+    {% block body %}{% endblock %}
+
+    {% if errors is defined %}
+        <ul>
+            {% for error in errors.all() %}
+                <li class="text-red-800 p-2">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</form>

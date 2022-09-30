@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.welcome');
+Route::view('/', 'quotes.index')->name('index');
+
+Route::name('quotes.')->group(function () {
+    // Route::view('/', 'quotes.index')->name('index');
+
+    Route::middleware('auth')->group(function () {
+    });
+});
+
+Route::middleware('can:admin')->name('admin.')->prefix('admin')->group(function () {
+    Route::view('/', 'admin.index')->name('index');
+
+    Route::name('user.')->prefix('user')->group(function () {
+        Route::view('/', 'admin.user.index')->name('index');
+    });
 });
