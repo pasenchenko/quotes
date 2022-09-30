@@ -1,11 +1,11 @@
-{% embed '@layout/default.twig' with {'title': 'Login'} %}
+{% embed '@layout/default.twig' with {title: trans('Login')} %}
     {% block main %}
         {{ parent() }}
-        {% embed '@form/form.twig' with {'action': route('login')} %}
+        {% embed '@form/form.twig' with {action: route('login')} %}
             {% block body %}
-                {{ include('@form/input/email.twig', {'name': 'email', 'label': 'Email:'}) }}
-                {{ include('@form/input/password.twig', {'name': 'password', 'label': 'Password:'}) }}
-                {{ include('@form/button/submit.twig', {'text': 'Log in'}) }}
+                {{ include('@form/input/email.twig', {name: 'email', label: trans('Email')}) }}
+                {{ include('@form/input/password.twig', {name: 'password', label: trans('Password')}) }}
+                {{ include('@form/button/submit.twig', {text: trans('Log In')}) }}
             {% endblock %}
         {% endembed %}
     {% endblock %}

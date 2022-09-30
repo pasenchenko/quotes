@@ -1,13 +1,13 @@
-{% embed '@layout/default.twig' with {'title': 'Registration'} %}
+{% embed '@layout/default.twig' with {title: trans('Register')} %}
     {% block main %}
         {{ parent() }}
-        {% embed '@form/form.twig' with {'action': route('register')} %}
+        {% embed '@form/form.twig' with {action: route('register')} %}
             {% block body %}
-                {{ include('@form/input/email.twig', {'name': 'email', 'label': 'Email:'}) }}
-                {{ include('@form/input/password.twig', {'name': 'password', 'label': 'Password:'}) }}
+                {{ include('@form/input/email.twig', {name: 'email', label: trans('Email')}) }}
+                {{ include('@form/input/password.twig', {name: 'password', label: trans('Password')}) }}
                 {{ include('@form/input/password.twig',
-                    {'name': 'password_confirmation', 'label': 'Password confirmation:'}) }}
-                {{ include('@form/button/submit.twig', {'text': 'Register'}) }}
+                    {name: 'password_confirmation', label: trans('Password confirmation')}) }}
+                {{ include('@form/button/submit.twig', {text: trans('Register')}) }}
             {% endblock %}
         {% endembed %}
     {% endblock %}
