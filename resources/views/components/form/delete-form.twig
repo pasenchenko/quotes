@@ -1,0 +1,13 @@
+{% embed '@components/form/form.twig' with {
+    action: action
+} %}
+    {% block body %}
+        <input type="hidden" name="_method" value="DELETE" />
+        <button
+            class="block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 my-2 rounded"
+            type="submit"
+        >
+            Delete
+        </button>
+    {% endblock %}
+{% endembed %}

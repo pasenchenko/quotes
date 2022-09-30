@@ -1,0 +1,17 @@
+{% embed '@layout/default.twig' with {'title': 'User Management'} %}
+    {% block main %}
+        {{ parent() }}
+
+        <p>
+            <a
+                class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 my-2 rounded"
+                href="{{ route('admin.users.create') }}"
+            >
+                New User
+            </a>
+        </p>
+        {% for user in users %}
+            {{ include('admin/users/_user-card.twig', {user: user}) }}
+        {% endfor %}
+    {% endblock %}
+{% endembed %}

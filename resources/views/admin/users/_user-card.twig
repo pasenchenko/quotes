@@ -1,0 +1,9 @@
+<div class="flex justify-between items-center">
+    <p>{{ user.email }}</p>
+
+    {% if user.id != auth_user().id %}
+        {{ include('@components/form/delete-form.twig', {
+            action: route('admin.users.destroy', {user: user})
+        }) }}
+    {% endif %}
+</div>

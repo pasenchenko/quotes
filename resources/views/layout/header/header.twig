@@ -9,7 +9,7 @@
             <a href="{{ route('admin.index') }}" class="text-xs font-bold uppercase text-red-800">Admin</a>
         {% endif %}
 
-        {% embed '@components/form/form.twig' with {'action': route('logout')} %}
+        {% embed '@components/form/form.twig' with {action: route('logout'), display_errors: false} %}
             {% block body %}
                 {{ include('@components/form/button/submit.twig', {'text': 'Log Out'}) }}
             {% endblock %}

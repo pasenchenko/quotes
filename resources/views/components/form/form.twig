@@ -3,7 +3,7 @@
 
     {% block body %}{% endblock %}
 
-    {% if errors is defined %}
+    {% if errors.any() and display_errors ?? true %}
         <ul>
             {% for error in errors.all() %}
                 <li class="text-red-800 p-2">{{ error }}</li>

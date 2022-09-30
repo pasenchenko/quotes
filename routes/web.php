@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,7 +27,7 @@ Route::name('quotes.')->group(function () {
 Route::middleware('can:admin')->name('admin.')->prefix('admin')->group(function () {
     Route::view('/', 'admin.index')->name('index');
 
-    Route::name('user.')->prefix('user')->group(function () {
-        Route::view('/', 'admin.user.index')->name('index');
-    });
+    Route::resource('users', UserController::class)->only([
+        'index', 'store', 'create', 'destroy'
+    ]);
 });
