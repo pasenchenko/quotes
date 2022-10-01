@@ -1,0 +1,16 @@
+{% embed '@layout/default.twig' with {title: trans('Edit Quote')} %}
+    {% block main %}
+        {{ parent() }}
+        {% embed '@form/form.twig' with {'action': route('quotes.update', quote)} %}
+            {% block body %}
+                <input type="hidden" name="_method" value="PUT" />
+                {{ include('@form/input/textarea.twig', {
+                    name: 'text',
+                    label: trans('Quote (unique, max 700 characters)'),
+                    value: quote.text
+                }) }}
+                {{ include('@form/button/submit.twig', {text: trans('Update')}) }}
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
+{% endembed %}

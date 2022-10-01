@@ -1,0 +1,6 @@
+<h3><label for="{{ name }}">{{ label }}</label></h3>
+<textarea
+    class="border-2 border-black rounded-lg w-full h-64"
+    id="{{ name }}"
+    name="{{ name }}"
+/>{{ old(name) | default(value) }}</textarea>

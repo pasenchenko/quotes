@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\QuoteController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -26,14 +27,9 @@ $localizationGroupAttributes = [
 Route::group($localizationGroupAttributes, __DIR__ . '/web/fortify.php');
 
 Route::group($localizationGroupAttributes, function () {
-    Route::view('/', 'quotes.index')->name('index');
+    Route::redirect('/', '/quotes')->name('index');
 
-    Route::name('quotes.')->group(function () {
-        // Route::view('/', 'quotes.index')->name('index');
-
-        Route::middleware('auth')->group(function () {
-        });
-    });
+    Route::resource('quotes', QuoteController::class)->except('show');
 
     Route::middleware('can:admin')->name('admin.')->prefix('admin')->group(function () {
         Route::view('/', 'admin.index')->name('index');

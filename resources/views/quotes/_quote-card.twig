@@ -1,0 +1,22 @@
+<div class="py-3">
+{% if auth_check() %}
+    <div class="flex gap-4">
+        <a
+            class="block bg-orange-500 text-white font-bold py-2 px-4 my-2 rounded"
+            href="{{ route('quotes.edit', {quote: quote}) }}"
+        >
+            {{ trans('Edit') }}
+        </a>
+        {{ include('@components/form/delete-form.twig', {
+            action: route('quotes.destroy', {quote: quote})
+        }) }}
+    </div>
+{% endif %}
+    <p class="pb-1">{{ quote.text | nl2br }}</p>
+
+    <div class="flex gap-4">
+        <p class="font-xs text-blue-700">{{ quote.user.email }}</p>
+        <p class="font-xs text-green-700">{{ trans('Shared') }}: {{ quote.shared_count }}</p>
+        <p>{{ trans('Share') }}: </p>
+    </div>
+</div>

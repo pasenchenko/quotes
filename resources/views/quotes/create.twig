@@ -1,0 +1,14 @@
+{% embed '@layout/default.twig' with {title: trans('Add Quote')} %}
+    {% block main %}
+        {{ parent() }}
+        {% embed '@form/form.twig' with {'action': route('quotes.store')} %}
+            {% block body %}
+                {{ include('@form/input/textarea.twig', {
+                    name: 'text',
+                    label: trans('Quote (unique, max 700 characters)')
+                }) }}
+                {{ include('@form/button/submit.twig', {text: trans('Add')}) }}
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
+{% endembed %}

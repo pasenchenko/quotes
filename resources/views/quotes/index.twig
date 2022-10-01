@@ -1,5 +1,19 @@
 {% embed '@layout/default.twig' with {title: trans('Latest quotes')} %}
     {% block main %}
         {{ parent() }}
+        {% if auth_check() %}
+            <p>
+                <a
+                    class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 my-2 rounded"
+                    href="{{ route('quotes.create') }}"
+                >
+                    {{ trans('Add Quote') }}
+                </a>
+            </p>
+        {% endif %}
+
+        {% for quote in quotes %}
+            {{ include('./quotes/_quote-card.twig', {quote: quote}) }}
+        {% endfor %}
     {% endblock %}
 {% endembed %}
