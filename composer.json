@@ -11,6 +11,7 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "mcamara/laravel-localization": "^1.7",
         "rcrowe/twigbridge": "^0.14.0",
         "twig/twig": "^3.4"
     },

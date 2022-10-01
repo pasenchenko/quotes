@@ -156,7 +156,9 @@ return [
         | in order to be marked as safe.
         |
         */
-        'facades' => [],
+        'facades' => [
+            'LaravelLocalization',
+        ],
 
         /*
         |--------------------------------------------------------------------------

@@ -1,7 +1,22 @@
 <nav class="py-4 flex justify-between items-center">
     <a class="block" href="{{ route('index') }}">{{ trans('Quotes') }}</a>
 
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-6">
+        <div>
+            {% for localeCode, properties in LaravelLocalization.getLocalesOrder() %}
+                {% if localeCode != LaravelLocalization.getCurrentLocale() %}
+                    <a
+                        class="underline text-blue-800"
+                        href="{{ LaravelLocalization.getLocalizedURL(localeCode, null, [], true) }}"
+                    >
+                        {{ localeCode }}
+                    </a>
+                {% else %}
+                    {{ localeCode }}
+                {% endif %}
+            {% endfor %}
+        </div>
+
     {% if auth_check() %}
         <div class="text-xs font-bold uppercase">{{ auth_user().email }}</div>
 
@@ -19,7 +34,7 @@
         <a href="{{ route('register') }}" class="text-xs font-bold uppercase">
             {{ trans('Register') }}
         </a>
-        <a href="{{ route('login') }}" class="ml-6 text-xs font-bold uppercase">
+        <a href="{{ route('login') }}" class="text-xs font-bold uppercase">
             {{ trans('Login') }}
         </a>
     {% endif %}
