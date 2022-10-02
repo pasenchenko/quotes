@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Quote;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\QuoteRequest;
 use App\Models\Quote;
-use Illuminate\Http\Request;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class QuoteController extends Controller

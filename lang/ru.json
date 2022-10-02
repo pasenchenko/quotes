@@ -15,6 +15,10 @@
     "Shared": "Поделились",
     "Share": "Поделиться",
 
+    "Share via": "Поделиться через",
+    "Nickname in Telegram": "Никнейм в Telegram",
+    "Phone number in Viber": "Номер телефона в Viber",
+
     "(and :count more error)": "(и ещё :count ошибка)",
     "(and :count more errors)": "(и ещё :count ошибок)",
     "Add": "Добавить",

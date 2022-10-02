@@ -1,0 +1,16 @@
+{% embed '@layout/default.twig' with {title: trans('Share via') ~ ' ' ~ channel_name} %}
+    {% block main %}
+        {{ parent() }}
+        {% embed '@form/form.twig' with {
+            'action': route('quotes.share.send', {quote: quote, channel: channel})
+        } %}
+            {% block body %}
+                {{ include(input.path, {
+                    name: config_get('share.channels.' ~ channel ~ '.formFieldName'),
+                    label: input.label
+                }) }}
+                {{ include('@form/button/submit.twig', {text: trans('Share')}) }}
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
+{% endembed %}

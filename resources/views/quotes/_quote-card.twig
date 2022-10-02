@@ -17,6 +17,16 @@
     <div class="flex gap-4">
         <p class="font-xs text-blue-700">{{ quote.user.email }}</p>
         <p class="font-xs text-green-700">{{ trans('Shared') }}: {{ quote.shared_count }}</p>
-        <p>{{ trans('Share') }}: </p>
+    </div>
+    <div class="flex gap-4">
+        <p>{{ trans('Share') }}:</p>
+    {% for channel, _ in config_get('share.channels') %}
+        <a
+            class="underline text-blue-800"
+            href="{{ route('quotes.share.show', {quote: quote, channel: channel}) }}"
+        >
+            {{ channel }}
+        </a>
+    {% endfor %}
     </div>
 </div>
