@@ -17,6 +17,13 @@ class Quote extends Model
     protected $fillable = ['user_id', 'lang', 'text'];
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['user'];
+
+    /**
      * Get the user that owns the quote.
      */
     public function user()
