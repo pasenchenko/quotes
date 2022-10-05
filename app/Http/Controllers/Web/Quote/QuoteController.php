@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Quote;
+namespace App\Http\Controllers\Web\Quote;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\QuoteRequest;

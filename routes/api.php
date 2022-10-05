@@ -1,7 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\V1\Admin\UserController;
+use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\Quote\QuoteController;
+use App\Http\Controllers\Api\V1\Quote\QuoteShareController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +18,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::controller(AuthController::class)->prefix('auth')->group(function () {
+    Route::post('/login', 'login');
+    Route::post('/register', 'register');
+});
+
+Route::apiResource('quotes', QuoteController::class)->except('show');
+
+Route::post('quotes/{quote}/share/{channel}', [QuoteShareController::class, 'send'])
+    ->whereIn('channel', array_keys(config('share.channels')))
+    ->name('quotes.share.send');
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::middleware('can:admin')->name('admin.')->prefix('admin')->group(function () {
+        Route::apiResource('users', UserController::class)->only([
+            'index', 'store', 'destroy'
+        ]);
+    });
 });

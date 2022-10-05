@@ -1,14 +1,10 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Quote\QuoteController;
-use App\Http\Controllers\Quote\QuoteShareController;
-use App\Models\Quote;
+use App\Http\Controllers\Web\Admin\UserController;
+use App\Http\Controllers\Web\Quote\QuoteController;
+use App\Http\Controllers\Web\Quote\QuoteShareController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-
-use function PHPSTORM_META\map;
 
 /*
 |--------------------------------------------------------------------------

@@ -1,18 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Quote;
+namespace App\Http\Controllers\Api\V1\Quote;
 
 use App\Http\Controllers\Controller;
 use App\Models\Quote;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class QuoteShareController extends Controller
 {
-    function show(Quote $quote, string $channel)
-    {
-        return view('quotes.share.' . $channel, compact('quote', 'channel'));
-    }
-
     function send(Request $request, Quote $quote, string $channel)
     {
         $channelConfig = config('share.channels')[$channel];
@@ -26,6 +22,6 @@ class QuoteShareController extends Controller
         $jobClassName = $channelConfig['job'];
         $jobClassName::dispatch($channel, $quote, $login);
 
-        return redirect()->route('quotes.index');
+        return response()->noContent(Response::HTTP_CREATED);
     }
 }

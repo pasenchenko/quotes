@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Web\Admin;
 
 use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\Controller;
